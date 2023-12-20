@@ -6,40 +6,40 @@ use DispensenDB;
 
 -- BASIS Tabelle Schüler erstellen
 CREATE TABLE Schueler (
-                         SchuelerID INT PRIMARY KEY not null auto_increment,
-                         anrede VARCHAR(10),
-                         name VARCHAR(50),
-                         vorname VARCHAR(50),
-                         email VARCHAR(100),
-                         telefonnummer VARCHAR(20),
-                         klasse VARCHAR(10),
-                         geburtstag DATE);
+                          SchuelerID INT PRIMARY KEY not null auto_increment,
+                          anrede VARCHAR(10),
+                          name VARCHAR(50),
+                          vorname VARCHAR(50),
+                          email VARCHAR(100),
+                          telefonnummer VARCHAR(20),
+                          klasse VARCHAR(10),
+                          geburtstag DATE);
 
 -- Daten einfügen in Tabelle Schüler
 INSERT INTO Schueler VALUES
-                        (0, 'Herr', 'Mustermann', 'Max', 'max.mustermann@example.com', '123456789', 'ME21a', '2005-01-15'),
-                        (0, 'Frau', 'Musterfrau', 'Anna', 'anna.musterfrau@example.com', '987654321', 'ME21b', '2004-08-22'),
-                        (0, 'Herr', 'Schmidt', 'Tom', 'tom.schmidt@example.com', '555444333', 'AB21c', '2005-03-10'),
-                        (0, 'Frau', 'Müller', 'Lisa', 'lisa.mueller@example.com', '111222333', 'AB22d', '2005-06-05'),
-                        (0, 'Herr', 'Schulz', 'Markus', 'markus.schulz@example.com', '999888777', 'FBA22a', '2004-12-18'),
-                        (0, 'Frau', 'Fischer', 'Julia', 'julia.fischer@example.com', '777666555', 'FB23b', '2005-02-28'),
-                        (0, 'Herr', 'Wagner', 'Michael', 'michael.wagner@example.com', '333222111', 'IA22a', '2004-11-08'),
-                        (0, 'Frau', 'Koch', 'Laura', 'laura.koch@example.com', '444555666', 'IM22b', '2005-09-14'),
-                        (0, 'Herr', 'Becker', 'Stefan', 'stefan.becker@example.com', '666777888', 'KFA22a', '2005-07-20'),
-                        (0, 'Frau', 'Schneider', 'Sophie', 'sophie.schneider@example.com', '222333444', 'KVA22b', '2004-10-03');
+                         (0, 'Herr', 'Mustermann', 'Max', 'max.mustermann@example.com', '123456789', 'ME21a', '2005-01-15'),
+                         (0, 'Frau', 'Musterfrau', 'Anna', 'anna.musterfrau@example.com', '987654321', 'ME21b', '2004-08-22'),
+                         (0, 'Herr', 'Schmidt', 'Tom', 'tom.schmidt@example.com', '555444333', 'AB21c', '2005-03-10'),
+                         (0, 'Frau', 'Müller', 'Lisa', 'lisa.mueller@example.com', '111222333', 'AB22d', '2005-06-05'),
+                         (0, 'Herr', 'Schulz', 'Markus', 'markus.schulz@example.com', '999888777', 'FBA22a', '2004-12-18'),
+                         (0, 'Frau', 'Fischer', 'Julia', 'julia.fischer@example.com', '777666555', 'FB23b', '2005-02-28'),
+                         (0, 'Herr', 'Wagner', 'Michael', 'michael.wagner@example.com', '333222111', 'IA22a', '2004-11-08'),
+                         (0, 'Frau', 'Koch', 'Laura', 'laura.koch@example.com', '444555666', 'IM22b', '2005-09-14'),
+                         (0, 'Herr', 'Becker', 'Stefan', 'stefan.becker@example.com', '666777888', 'KFA22a', '2005-07-20'),
+                         (0, 'Frau', 'Schneider', 'Sophie', 'sophie.schneider@example.com', '222333444', 'KVA22b', '2004-10-03');
 
 
 -- BASIS Tabelle Lehrberuf erstellen
 CREATE TABLE Lehrberufe (
-                           LehrberufeID INT PRIMARY KEY not null auto_increment,
-                           lehrberuf VARCHAR(50));
+                            LehrberufeID INT PRIMARY KEY not null auto_increment,
+                            lehrberuf VARCHAR(50));
 
 -- Daten einfügen in Tabelle Lehrberuf
 INSERT INTO Lehrberufe VALUES
-                          (0, 'KV'),
-                          (0, 'Mediamatik'),
-                          (0, 'Informatik'),
-                          (0, 'Betreuung');
+                           (0, 'KV'),
+                           (0, 'Mediamatik'),
+                           (0, 'Informatik'),
+                           (0, 'Betreuung');
 
 
 -- BASIS Tabelle Abteilung erstellen
@@ -55,22 +55,22 @@ INSERT INTO Abteilung VALUES
 
 -- BASIS Tabelle Gründe erstellen
 CREATE TABLE Gruende (
-                                GruendeID INT PRIMARY KEY not null auto_increment,
-                                grund VARCHAR(100),
-                                abkuerzung_grund VARCHAR(10));
+                         GruendeID INT PRIMARY KEY not null auto_increment,
+                         grund VARCHAR(100),
+                         abkuerzung_grund VARCHAR(10));
 
 -- Daten einfügen
 INSERT INTO Gruende VALUES
-                               (0, 'Krankheit', 'KR'),
-                               (0, 'Familiäre Gründe', 'FG'),
-                               (0, 'Notwendige Termine', 'NT'),
-                               (0, 'Berufliche Verpflichtungen', 'BV'),
-                               (0, 'Unfall', 'UF'),
-                               (0, 'Persönliche Gründe', 'PG'),
-                               (0, 'Unvorhergesehene Ereignisse', 'UE'),
-                               (0, 'Sportliche Veranstaltungen', 'SpV'),
-                               (0, 'Religiöse Feiertage', 'RF'),
-                               (0, 'Sonstiges', 'SO');
+                        (0, 'Krankheit', 'KR'),
+                        (0, 'Familiäre Gründe', 'FG'),
+                        (0, 'Notwendige Termine', 'NT'),
+                        (0, 'Berufliche Verpflichtungen', 'BV'),
+                        (0, 'Unfall', 'UF'),
+                        (0, 'Persönliche Gründe', 'PG'),
+                        (0, 'Unvorhergesehene Ereignisse', 'UE'),
+                        (0, 'Sportliche Veranstaltungen', 'SpV'),
+                        (0, 'Religiöse Feiertage', 'RF'),
+                        (0, 'Sonstiges', 'SO');
 
 
 -- BASIS Tabelle Betroffene Lehrer erstellen
@@ -95,17 +95,17 @@ INSERT INTO BetroffeneLehrer VALUES
 
 -- BASIS Tabelle Bestaetigung erstellen
 CREATE TABLE Bestaetigung (
-                             BestaetigungID INT PRIMARY KEY not null auto_increment,
-                             bestaetigung_lehrbetrieb VARCHAR(4),
-                             bestaetigung_erziehungsberechtigte VARCHAR(4)
+                              BestaetigungID INT PRIMARY KEY not null auto_increment,
+                              bestaetigung_lehrbetrieb VARCHAR(4),
+                              bestaetigung_erziehungsberechtigte VARCHAR(4)
 );
 
 -- Daten einfügen in Tabelle Bestaetigung
 INSERT INTO Bestaetigung VALUES
-                            (0, 'Ja', 'Ja'),
-                            (0, 'Nein', 'Nein'),
-                            (0, 'Ja', 'Nein'),
-                            (0, 'Nein', 'Ja');
+                             (0, 'Ja', 'Ja'),
+                             (0, 'Nein', 'Nein'),
+                             (0, 'Ja', 'Nein'),
+                             (0, 'Nein', 'Ja');
 
 -- RELATIONS Tabelle Eintraege erstellen
 CREATE TABLE Eintraege (
@@ -138,8 +138,3 @@ VALUES
     ('2023-08-19', 'Familienfeier', 6, 4, 2, 4, 2, 1),
     ('2023-09-03', 'Teilnahme an Seminar', 9, 3, 1, 9, 10, 2),
     ('2023-10-17', 'Arzttermin', 8, 1, 2, 7, 3, 1);
-
-
-
-
-
