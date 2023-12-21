@@ -1,10 +1,9 @@
+-- Datenbank erstellen und verwenden
 create database DispensenDB;
-drop database DispensenDB;
-
 use DispensenDB;
 
 
--- BASIS Tabelle Schüler erstellen
+-- BASIS Tabelle Schüler erstellen und Attribute definieren
 CREATE TABLE Schueler (
                           SchuelerID INT PRIMARY KEY not null auto_increment,
                           anrede VARCHAR(10),
@@ -15,7 +14,9 @@ CREATE TABLE Schueler (
                           klasse VARCHAR(10),
                           geburtstag DATE);
 
--- Daten einfügen in Tabelle Schüler
+-- CRUD-BEFEHLE:
+
+-- Daten einfügen in Tabelle Schüler (Crud)
 INSERT INTO Schueler VALUES
                          (0, 'Herr', 'Mustermann', 'Max', 'max.mustermann@example.com', '123456789', 'ME21a', '2005-01-15'),
                          (0, 'Frau', 'Musterfrau', 'Anna', 'anna.musterfrau@example.com', '987654321', 'ME21b', '2004-08-22'),
@@ -27,6 +28,26 @@ INSERT INTO Schueler VALUES
                          (0, 'Frau', 'Koch', 'Laura', 'laura.koch@example.com', '444555666', 'IM22b', '2005-09-14'),
                          (0, 'Herr', 'Becker', 'Stefan', 'stefan.becker@example.com', '666777888', 'KFA22a', '2005-07-20'),
                          (0, 'Frau', 'Schneider', 'Sophie', 'sophie.schneider@example.com', '222333444', 'KVA22b', '2004-10-03');
+
+-- Tabelle ausgeben (cRud)
+SELECT * from Schueler;
+
+-- Tabelle filtern nach Geburtstag aufsteigend
+SELECT * from Schueler
+ORDER BY geburtstag;
+
+-- Tabelle filtern nach Geburtstag absteigend
+SELECT * from Schueler
+ORDER BY geburtstag desc;
+
+-- Tabelle aktualisieren (crUd)
+UPDATE Schueler
+set anrede = 'Frau'
+    where name = 'Mustermann';
+
+-- Tabelle löschen (cruD)
+DROP table Schueler;
+-- Bemerkung: Geht hier nicht, da Werte aus der Basistabelle 'Schueler' in der Relationstabelle 'Eintraege' verwendet werden.
 
 
 -- BASIS Tabelle Lehrberuf erstellen
@@ -138,3 +159,26 @@ VALUES
     ('2023-08-19', 'Familienfeier', 6, 4, 2, 4, 2, 1),
     ('2023-09-03', 'Teilnahme an Seminar', 9, 3, 1, 9, 10, 2),
     ('2023-10-17', 'Arzttermin', 8, 1, 2, 7, 3, 1);
+
+
+-- Tabelle Eintraege mit JOIN-Anweisungen ausgeben
+SELECT
+    E.abwesenheitsdatum,
+    E.kommentar,
+    S.anrede,
+    S.name,
+    S.vorname,
+    L.lehrberuf,
+    A.abteilung,
+    G.grund,
+    BL.vorname_lehrer AS betroffener_lehrer_vorname,
+    BL.nachname_lehrer AS betroffener_lehrer_nachname,
+    BE.bestaetigung_lehrbetrieb,
+    BE.bestaetigung_erziehungsberechtigte
+FROM Eintraege E
+         INNER JOIN Schueler S ON E.SchuelerID = S.SchuelerID
+         INNER JOIN Lehrberufe L ON E.LehrberufID = L.LehrberufeID
+         INNER JOIN Abteilung A ON E.AbteilungID = A.AbteilungID
+         INNER JOIN Gruende G ON E.GruendeID = G.GruendeID
+         INNER JOIN BetroffeneLehrer BL ON E.BetroffeneLehrerID = BL.BetroffeneLehrerID
+         INNER JOIN Bestaetigung BE ON E.BestaetigungID = BE.BestaetigungID;
