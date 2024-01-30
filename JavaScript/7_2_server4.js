@@ -25,9 +25,9 @@ app.use(bodyParser.json());
 
 const config = {
     host: 'localhost',
-    database: 'appDB',
-    user: "appAdmin",
-    password: 'appAdminPW'
+    database: 'DispensenDB',
+    user: "root",
+    password: 'LlSsIi_9283'
 }
 
 const connection = mysql.createConnection(config)
@@ -50,8 +50,8 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-app.get('/user', (req, res) => {
-    connection.query('SELECT * FROM user', [req.params.id], (err, rows, fields) => {
+app.get('/SQL/tables.sql', (req, res) => {
+    connection.query('SELECT * FROM Eintraege', [req.params.id], (err, rows, fields) => {
         if (!err) {
             console.log(rows);
             res.send(rows);
@@ -61,8 +61,8 @@ app.get('/user', (req, res) => {
 
     })
 });
-app.get('/user/:id', (req, res) => {
-    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows, fields) => {
+app.get('/Eintraege/:id', (req, res) => {
+    connection.query('SELECT * FROM Eintraege WHERE id = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
             console.log(rows);
             res.send(rows);
@@ -73,8 +73,8 @@ app.get('/user/:id', (req, res) => {
     })
 });
 
-app.delete('/user/:id', (req, res) => {
-    connection.query(' DELETE FROM user WHERE id = ? ', [req.params.id], (err, rows, fields) => {
+app.delete('/Eintraege/:id', (req, res) => {
+    connection.query(' DELETE FROM Eintraege WHERE id = ? ', [req.params.id], (err, rows, fields) => {
         if (!err) {
             res.send('Delete operation was successful')
             // res.send(rows)
