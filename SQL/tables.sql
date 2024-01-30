@@ -42,7 +42,7 @@ ORDER BY geburtstag desc;
 
 -- Tabelle aktualisieren (crUd)
 UPDATE Schueler
-set anrede = 'Frau'
+set anrede = 'Mann'
     where name = 'Mustermann';
 
 -- Tabelle löschen (cruD)
