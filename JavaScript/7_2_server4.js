@@ -19,15 +19,15 @@ var app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const port = 3000;
+const port = 3002;
 
 app.use(bodyParser.json());
 
 const config = {
     host: 'localhost',
     database: 'DispensenDB',
-    user: "root",
-    password: 'LlSsIi_9283'
+    user: "appAdmin",
+    password: 'appAdminPW'
 }
 
 const connection = mysql.createConnection(config)
@@ -86,3 +86,18 @@ app.delete('/Eintraege/:id', (req, res) => {
 });
 
 
+
+
+
+app.get('/eintraege', (req, res) => {
+    connection.query('SELECT * FROM ' +
+        'eintraege', [req.params.id], (err, rows, fields) => {
+        if (!err) {
+            console.log(rows);
+            res.send(rows);
+        } else {
+            console.log(err);
+        }
+
+    })
+});
