@@ -1,5 +1,5 @@
 /* *******************************************************************************************
-* Autor: V. Demir, 1/2024
+* Autor: T. Kavazov, L. Siebert, 1/2024
 * *******************************************************************************************
 * Beschreibung:
 * Express-Server, um CRUD-Operationen vom Browser entgegen zunehmen an der DB durchzuführen
@@ -11,14 +11,15 @@
 * npm install body-parser
 * npm install express
 ** ***************************************************************************************** */
-// Referenz: www.npmjs.com/package/mysql
 
+/* express konfigurieren */
 const mysql = require("mysql");
 const express = require('express');
 var app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
+/* port 3002 konfigurieren */
 const port = 3002;
 
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ const config = {
 
 const connection = mysql.createConnection(config)
 
+/* Ausgabe für Datenbank-Connection */
 connection.connect(function(err) {
     if (err) throw err;
     console.log('Connected to MySQL database:', connection.config.database);
@@ -46,10 +48,12 @@ connection.connect(function(err) {
     */
 });
 
+/* Ausgabe für Port */
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
+/* Ausgabe der ganzen Tabelle Eintraege */
 app.get('/SQL/tables.sql', (req, res) => {
     connection.query('SELECT * FROM Eintraege', [req.params.id], (err, rows, fields) => {
         if (!err) {
@@ -61,6 +65,8 @@ app.get('/SQL/tables.sql', (req, res) => {
 
     })
 });
+
+/* Ausgabe bestimmter Attribute der Tabelle Eintraege */
 app.get('/Eintraege/:id', (req, res) => {
     connection.query('SELECT * FROM Eintraege WHERE id = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
@@ -73,6 +79,7 @@ app.get('/Eintraege/:id', (req, res) => {
     })
 });
 
+/* Ausgabe DELETE bestimmter Attribute der Tabelle Eintraege */
 app.delete('/Eintraege/:id', (req, res) => {
     connection.query(' DELETE FROM Eintraege WHERE id = ? ', [req.params.id], (err, rows, fields) => {
         if (!err) {
