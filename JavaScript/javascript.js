@@ -68,7 +68,7 @@ app.get('/SQL/tables.sql', (req, res) => {
 
 /* Ausgabe bestimmter Datensatz der Tabelle Eintraege */
 app.get('/Eintraege/:id', (req, res) => {
-    connection.query('SELECT * FROM Eintraege WHERE id = ?', [req.params.id], (err, rows, fields) => {
+    connection.query('SELECT * FROM Eintraege WHERE EintraegeID = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
             console.log(rows);
             res.send(rows);
@@ -81,7 +81,7 @@ app.get('/Eintraege/:id', (req, res) => {
 
 /* Ausgabe DELETE bestimmter Datensatz der Tabelle Eintraege */
 app.delete('/Eintraege/:id', (req, res) => {
-    connection.query(' DELETE FROM Eintraege WHERE id = ? ', [req.params.id], (err, rows, fields) => {
+    connection.query(' DELETE FROM Eintraege WHERE EintraegeID = ? ', [req.params.id], (err, rows, fields) => {
         if (!err) {
             res.send('Delete operation was successful')
             // res.send(rows)

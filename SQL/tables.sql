@@ -1,4 +1,9 @@
+/* *******************************************************************************************
+* Autor: T. Kavazov, L. Siebert, 1/2024
+* *******************************************************************************************/
+
 -- Datenbank erstellen und verwenden
+drop database DispensenDB;
 create database DispensenDB;
 use DispensenDB;
 
