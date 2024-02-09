@@ -4,7 +4,7 @@
 * Beschreibung:
 * Express-Server, um CRUD-Operationen vom Browser entgegen zunehmen an der DB durchzuführen
 * *******************************************************************************************
-* Hinweise
+* Hinweis
 * npm install node
 * npm init -y
 * npm install mysql
